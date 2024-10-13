@@ -3,49 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Indovina il numero</title>
 </head>
 <body>
+    <h1>Inserisci un numero da 1 a 100</h1>
+    <form>
+        <input id="n" type="number" value="0" max="100" min="1">
+        <input id="b" type="button" value="invia">
+    </form>
+    <div id="message"></div>
 
-
-
-
-    <script type="text/javascript">
+    <script>
         function generateRandomInteger(min, max) {
-        let casuale = Math.random()
-        casuale = casuale * max
-        casuale = parseInt(casuale)
-        return casuale
-    }
-
-    function sanitize(valore){
-        valore= valore.trim()
-        return valore
-    }
-    let I=0
-    let valore=0
-    let casuale=generateRandomInteger(1, 100)
-    do{
-    valore = prompt ("ciao indovina il numero generato fra 1 e 100: inserisci il numero")
-    while(valore===null){
-        valore = prompt ("ciao indovina il numero generato fra 1 e 100: inserisci il numero")
-    }
-    valore=sanitize(valore)
-    valore=parseInt(valore)
-    if(valore===casuale){
-        console.log("hai vinto")
-    }else{
-        if(valore<casuale){
-            console.log("il numero è troppo piccolo")
-        }else{
-            console.log("il numero è troppo grande")
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-    }
-    I=I+1
-    }while(I<5 && valore!==casuale)
 
+        let randomNumber = generateRandomInteger(1, 100);
+        let button = document.querySelector("#b");
+        let number = document.querySelector("#n");
+        let message = document.querySelector("#message");
 
+        button.addEventListener('click', function() {
+            const indovina = parseInt(number.value); 
 
+            if (isNaN(indovina)  indovina < 1  indovina > 100) {
+                message.textContent = "Per favore, inserisci un numero tra 1 e 100."; 
+                return;
+            }
+
+            if (indovina === randomNumber) {
+                message.textContent = "Hai indovinato il numero corretto!";
+            } else if (indovina < randomNumber) {
+                message.textContent = "Hai inserito un numero minore.";
+            } else {
+                message.textContent = "Hai inserito un numero maggiore.";
+            }
+        });
     </script>
 </body>
 </html>
