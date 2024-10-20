@@ -1,0 +1,36 @@
+.colore{
+    background-color: #bdecb6;
+}
+
+.col-6{
+        text-align: left;
+}
+
+.centre{
+    text-align: center;
+}
+
+.number{
+    margin-bottom: 18px;
+    padding: 20px 140px;
+    border-radius: 10px;
+}
+
+#b{
+    margin-bottom: 18px;
+    padding: 20px 159px;
+    border-radius: 10px;
+    background-color: #3AE3A8;
+}
+
+h1{
+    padding-top: 120px;
+    padding-bottom: 48px;
+    text-align: center;
+}
+
+p{
+    text-align: left;
+    padding-left: 32px;
+    padding-top: 50px;
+}

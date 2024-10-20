@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Indovina il numero</title>
+</head>
+<body class="colore">
+    <div>
+        <div class= "container text-center">
+            <div class="row">
+                <div class="col-3">
+                </div>
+                <div class="col-6">
+                    <div class="D">
+                        <h1 style="font-size: 50px;"> <strong>INDOVINA IL NUMERO</strong> </h1>
+                    </div>
+
+                    <ol>
+                        <li>Il computer sceglierà segretamente un numero intero casuale tra 1 e 100.</li>
+                        <li>Il tuo obiettivo è indovinare questo numero segreto nel minor numero di tentativi possibile.</li>
+                        <li>Ad ogni tentativo, inserisci un numero e il computer ti darà un indizio:</li>
+                    </ol>
+                    <ul>
+                        <li>Se il tuo numero è troppo basso, ti dirà "Troppo basso, prova un numero più alto!"</li>
+                        <li>Se il tuo numero è troppo alto, ti dirà "Troppo alto, prova un numero più basso!"</li>
+                        <li>Se indovini il numero esatto, vincerai la partita!</li>
+                    </ul>
+                    <ol>
+                        <li>Continua a fare tentativi finché non indovini il numero magico.</li>
+                        <li>Alla fine del gioco, ti verrà mostrato il numero di tentativi che hai impiegato per indovinare.</li>
+                        <li>Sfida te stesso a indovinare il numero con il minor numero di tentativi possibile!</li>
+                    </ol>
+                </div>
+                <div class="cole-3">
+                </div>
+
+                    
+                </div>  
+            </div> 
+            <div class= "container text-center">
+                <div class="row">
+                    <div class="col-4">
+                        
+                    </div>
+                    <div class="col-4">
+                        <form>
+                            <p>Inserisci il numero magico</p>
+                            <input id="n" type="number" value="0" class="number" max="100" min="1"><br>
+                            <input id="b" type="button" value="invia">
+                        </form>
+                        <div id="message"></div>
+                    </div>
+                    <div class="col-4">
+                        
+                    </div>
+                </div></div>
+    </div>
+    
+    <script>
+        function generateRandomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        let randomNumber = generateRandomInteger(1, 100);
+        let button = document.querySelector("#b");
+        let number = document.querySelector("#n");
+        let message = document.querySelector("#message");
+        let tentativi = 5
+        button.addEventListener('click', function() {
+            if (tentativi === 0) {
+                    message.textContent = "Tentativi esauriti! Il numero corretto era: " + randomNumber;
+                    return;
+                }
+            const indovina = parseInt(number.value); 
+            tentativi=tentativi-1;
+
+            if (isNaN(indovina) ||  indovina < 1 || indovina > 100) {
+                message.textContent = "Inserisci un numero tra 1 e 100."; 
+                tentativi=tentativi+1;
+                return;
+            }
+
+            if (indovina === randomNumber) {
+                message.textContent = "Hai indovinato";
+            } else if (indovina < randomNumber) {
+                message.textContent = "Numero troppo piccolo! Hai ancora " + tentativi + " tentativi.";
+            } else {
+                message.textContent = "Numero troppo grande! Hai ancora " + tentativi + " tentativi.";
+            }
+        });
+    </script>
+</body>
+</html>
