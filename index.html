@@ -83,7 +83,6 @@
 
             if (indovina === randomNumber) {
                 message.textContent = "Hai indovinato! Numero di tentativi rimanenti: " + tentativi;
-                button.disabled = true;
                 return;
             } else if (indovina < randomNumber) {
                 message.textContent = "Numero troppo piccolo! Hai ancora " + tentativi + " tentativi.";
